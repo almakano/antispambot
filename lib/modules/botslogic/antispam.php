@@ -3,7 +3,7 @@ namespace BotsLogic;
 
 use SubscriberMessage;
 
-class AntispamLogic extends DefaultLogic {
+class Antispam extends DefaultLogic {
 
 	public $bot;
 	public $whitelist_ids = [];
