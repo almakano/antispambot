@@ -8,6 +8,15 @@ class Antispam extends DefaultLogic {
 	public $bot;
 	public $whitelist_ids = [];
 	public $whitelist_names = [];
+	public $names = [
+		'XXXo888888',
+		'Cristall',
+		'3a-fb',
+		'ManyBenG',
+		'CristYSend',
+		'BbitMainN',
+		'neutral_',
+	];
 	public $link = [
 		'@',
 		'bot',
@@ -105,12 +114,14 @@ class Antispam extends DefaultLogic {
 			)
 		) {
 			// whitelist
+			return false;
+
 		} else if(
 			// has @ in text
 			// or has many unicode underlined symbols
 			// or use cyrillic with latin symbols in one word
 			// or forwarded from another group
-			preg_match('~(XXXo888888|Cristall|3a-fb|ManyBenG|CristYSend|BbitMainN|neutral_|.{69,}@|(?:.\\x{035f}){5,})~isu', $message->body)
+			preg_match('~('.implode('|', $this->names).'|.{69,}@|(?:.\\x{035f}){5,})~isu', $message->body)
 			|| (
 				preg_match_all('~\w*(?:[а-я]+[a-z]+|[a-z]+[а-я]+)\w*~ui', $message->body, $m1)
 				&& count($m1[0]) >= 5
