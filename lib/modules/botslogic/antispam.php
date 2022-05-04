@@ -1,5 +1,5 @@
 <?php
-namespace BotsLogic;
+namespace BotsLogic; 
 
 use SubscriberMessage;
 
